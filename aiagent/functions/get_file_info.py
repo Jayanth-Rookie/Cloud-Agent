@@ -16,3 +16,20 @@ def get_file_info(working_directory,directory=None):
         size = os.path.getsize(item_path)
         final_response += f"Name: {item}, Type: {'Directory' if is_dir else 'File'}, Size: {size} bytes\n"
     return final_response
+
+schema_get_files_info = {
+    "type": "function",
+    "function": {
+        "name": "get_files_info",
+        "description": "Lists files in a specified directory relative to the working directory, providing file size and directory status",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "directory": {
+                    "type": "string",
+                    "description": "Directory path to list files from, relative to the working directory (default is the working directory itself)",
+                },
+            },
+        },
+    },
+}
